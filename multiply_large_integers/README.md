@@ -1,16 +1,16 @@
-**Problem Summary:**
+# Problem Summary
 
 Assume you have a 32-bit processor with support for widening multiplication (64-bit result). Write a big-integer multiplication function, dmult(x, y), where x and y are represented by arrays that represent a very large integer. The result of the function should be an array that contains the product of the two inputs. Describe any design, performance, and optimization considerations.
 
-**Multiplication of Large Integers:**
+## Multiplication of Large Integers
 
-Research:
+### Research:
 
 https://people.eecs.berkeley.edu/~vazirani/algorithms/chap2.pdf
 
 https://en.wikipedia.org/wiki/Multiplication_algorithm
 
-Synopsis:
+### Synopsis:
 
 There are several ways to approach this problem:
   * hardware-accelerated multiplication using the ALU (Arithmetic Logic Unit) on the chip. 
@@ -32,7 +32,7 @@ There are several ways to approach this problem:
       * BIG_O(n\*log(n)\*log(log(n)) and n\*log(n)\*2^BIG_O(lg\*n))
       * practical for numbers with 10,000 to 40,000 decimal digits
   
-**Solution:**
+## Solution
 Ideally, a combination that makes use of the hardware acceleration and Karatsuba seems like the optimal solution to this generic problem. This is the one that I will attempt to implement.
 
 However, if extremely large numbers are possible (> 10,000 digit decimals), there should be a conditional expression in the dmult(x,y) function that invokes the FFT-based algorithm implementation as opposed to Karatsuba.
