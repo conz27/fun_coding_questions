@@ -32,6 +32,7 @@ There are several ways to approach this problem:
       * BIG_O(n\*log(n)\*log(log(n)) and n\*log(n)\*2^BIG_O(lg\*n))
       * practical for numbers with 10,000 to 40,000 decimal digits
   
-The right algorithm to use depends on the size of the multiplicands. Ideally, you may implement all three and dpe
+**Solution:**
+Ideally, a combination that makes use of the hardware acceleration and Karatsuba seems like the optimal solution to this generic problem. This is the one that I will attempt to implement.
 
-Each of the listed algorithms increases in complexity from the previous one and 
+However, if extremely large numbers are possible (> 10,000 digit decimals), there should be a conditional expression in the dmult(x,y) function that invokes the FFT-based algorithm implementation as opposed to Karatsuba.
