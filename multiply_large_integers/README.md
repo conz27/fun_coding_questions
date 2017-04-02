@@ -4,12 +4,13 @@ Assume you have a 32-bit processor with support for widening multiplication (64-
 
 **Multiplication of Large Integers:**
 
-__Research:__
+Research:
 
 https://people.eecs.berkeley.edu/~vazirani/algorithms/chap2.pdf
+
 https://en.wikipedia.org/wiki/Multiplication_algorithm
 
-__Synopsis:__
+Synopsis:
 
 There are several ways to approach this problem:
   * hardware-accelerated multiplication using the ALU (Arithmetic Logic Unit) on the chip. 
