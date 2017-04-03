@@ -33,6 +33,6 @@ There are several ways to approach this problem:
       * practical for numbers with 10,000 to 40,000 decimal digits
   
 ## Solution
-Ideally, a combination that makes use of the hardware acceleration and Karatsuba seems like the optimal solution to this generic problem. This is the one that I will attempt to implement.
+The ideal solution is entirely dependent on the number of digits *n* that a multiplicand has. If *n* is sufficiently small, Karatsuba is slower than the naive method due to the overhead of recursions. If *n* is in the order of several thousand digits, Karatsuba / Toom-Cook offer better performance than the naive method. And last by not least, there comes a point around when *n* > 10,000 digits where FFT-based algorithms become asymptotically faster than the recursion-based ones. The optimial solution determines the appropriate algorithm to use based on the size of *n*.
 
-However, if extremely large numbers are possible (> 10,000 digit decimals), there should be a conditional expression in the dmult(x,y) function that invokes the FFT-based algorithm implementation as opposed to Karatsuba.
+In practice today, bignum libraries employ the Karatsuba algorithm and may contain optimizations based on size of *n*. They can also reduce the number of recursions required based on whether the native architecture supports 16-bit or 32-bit integer multiplication, so the terminating condition of *n* == 1 can be changed to *n* == 16 or 32. This allows us to make use of the hardware acclerated multipliers for the last step.
