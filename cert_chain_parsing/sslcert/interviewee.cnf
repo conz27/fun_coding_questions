@@ -42,12 +42,12 @@ req_extensions          = v3_req
 # your local environment!
 #
 [ interviewee_distinguished_name ]
-commonName              = answers.interviews.isara.com
+commonName              = interviewee.crypto.guru
 stateOrProvinceName     = Ontario
 countryName             = CA
-emailAddress            = hr@isara.com
-organizationName        = ISARA
-organizationalUnitName  = Human Resources
+emailAddress            = constantine.grantcharov@gmail.com
+organizationName        = ToBeDetermined
+organizationalUnitName  = Research & Development
 
 [ v3_req ]
 basicConstraints        = CA:false
