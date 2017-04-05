@@ -1,0 +1,54 @@
+[ ca ]
+default_ca      = interviewee
+#
+#
+# Default location of directories and files needed to generate certificates.
+#
+[ interviewee ]
+dir             = .
+certificate     = $dir/certs/interviewee.crt
+database        = $dir/index.txt
+new_certs_dir   = $dir/certs
+private_key     = $dir/private/interviewee.key
+serial          = $dir/serial
+#
+#
+# Default expiration and encryption policies for certificates.
+#
+default_crl_days        = 365
+default_days            = 1825
+default_md              = sha256
+#
+#
+# x509 extensions to use when generating server certificates.
+#
+[ interviewee_extensions ]
+#
+#
+# The default interviewee certificate generation policy.
+#
+[ req ]
+default_bits    = 2048
+default_keyfile = interviewee.key
+default_md      = sha256
+encrypt_key     = no
+#
+prompt                  = no
+distinguished_name      = interviewee_distinguished_name
+req_extensions          = v3_req
+#
+#
+# interviewee Certificate Authority distinguished name.  Change these fields to match
+# your local environment!
+#
+[ interviewee_distinguished_name ]
+commonName              = answers.interviews.isara.com
+stateOrProvinceName     = Ontario
+countryName             = CA
+emailAddress            = hr@isara.com
+organizationName        = ISARA
+organizationalUnitName  = Human Resources
+
+[ v3_req ]
+basicConstraints        = CA:false
+keyUsage                = nonRepudiation, digitalSignature, keyEncipherment

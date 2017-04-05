@@ -1,0 +1,9 @@
+cert_chain_parsing/**/*.p12
+cert_chain_parsing/**/*.pem
+cert_chain_parsing/**/*.key
+cert_chain_parsing/**/*.crt
+cert_chain_parsing/**/*.csr
+cert_chain_parsing/**/*.txt
+cert_chain_parsing/**/*.old
+cert_chain_parsing/**/*.attr
+cert_chain_parsing/sslcert/serial

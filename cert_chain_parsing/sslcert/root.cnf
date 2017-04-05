@@ -1,0 +1,74 @@
+[ ca ]
+default_ca      = root
+#
+#
+# Default location of directories and files needed to generate certificates.
+#
+[ root ]
+dir             = .
+certificate     = $dir/certs/root.crt
+database        = $dir/index.txt
+new_certs_dir   = $dir/certs
+private_key     = $dir/private/root.key
+serial          = $dir/serial
+#
+#
+# Default expiration and encryption policies for certificates.
+#
+default_crl_days        = 365
+default_days            = 1825
+default_md              = sha256
+#
+policy          = root_policy
+x509_extensions = root_extensions
+#
+#
+# Copy extensions specified in the certificate request
+#
+copy_extensions = copy
+#
+#
+# Default policy to use when generating server certificates.  The following
+# fields must be defined in the server certificate.
+#
+[ root_policy ]
+commonName              = supplied
+stateOrProvinceName     = supplied
+countryName             = supplied
+emailAddress            = supplied
+organizationName        = supplied
+organizationalUnitName  = supplied
+#
+#
+# x509 extensions to use when generating server certificates.
+#
+[ root_extensions ]
+basicConstraints        = CA:false
+#
+#
+# The default root certificate generation policy.
+#
+[ req ]
+default_bits    = 4098
+default_keyfile = root.key
+default_md      = sha256
+encrypt_key     = no
+#
+prompt                  = no
+distinguished_name      = root_ca_distinguished_name
+x509_extensions         = root_ca_extensions
+#
+#
+# Root Certificate Authority distinguished name.  Change these fields to match
+# your local environment!
+#
+[ root_ca_distinguished_name ]
+commonName              = answers.interviews.isara.com
+stateOrProvinceName     = Ontario
+countryName             = CA
+emailAddress            = hr@isara.com
+organizationName        = ISARA
+organizationalUnitName  = Human Resources
+#
+[ root_ca_extensions ]
+basicConstraints        = CA:true
