@@ -10,10 +10,10 @@ contain enough information for us to reproduce your work).
 Tested on Ubuntu 16.04
 
 ## Prerequisites:
-CMake >= 3.0.2
-OpenSSL
-libssl
-libcrypto
+* CMake >= 3.0.2
+* OpenSSL
+* libssl
+* libcrypto
 
 ## Generate Certificates
 ```
