@@ -5,3 +5,17 @@ forming a certificate chain in PKCS12 (.p12) format. Then, write code with the h
 that will print out whether or not a certificate is a self signed certificate, and the fingerprint of each
 certificate. Please submit your certificates and build instructions along with your code (your submission should
 contain enough information for us to reproduce your work).
+
+# Generate Certificates
+{code}
+cd sslcert
+./generate_certificates.sh
+{code}
+
+# Run 'certinfo' program
+{code}
+cd sslcert/src
+./build.sh
+./certinfo ../certs/root.crt
+./certinfo ../certs/interviewee.crt
+{code}
