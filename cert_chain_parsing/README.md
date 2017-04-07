@@ -6,13 +6,22 @@ that will print out whether or not a certificate is a self signed certificate, a
 certificate. Please submit your certificates and build instructions along with your code (your submission should
 contain enough information for us to reproduce your work).
 
-# Generate Certificates
+## Enviroment:
+Tested on Ubuntu 16.04
+
+## Prerequisites:
+CMake >= 3.0.2
+OpenSSL
+libssl
+libcrypto
+
+## Generate Certificates
 ```
 cd sslcert
 ./generate_certificates.sh
 ```
 
-# Run 'certinfo' program
+## Run 'certinfo' program
 ```
 cd sslcert/src
 # Build Application
