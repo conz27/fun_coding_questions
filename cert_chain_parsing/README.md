@@ -7,15 +7,17 @@ certificate. Please submit your certificates and build instructions along with y
 contain enough information for us to reproduce your work).
 
 # Generate Certificates
-{code}
+```
 cd sslcert
 ./generate_certificates.sh
-{code}
+```
 
 # Run 'certinfo' program
-{code}
+```
 cd sslcert/src
+# Build Application
 ./build.sh
+# Run Application
 ./certinfo ../certs/root.crt
 ./certinfo ../certs/interviewee.crt
-{code}
+```
