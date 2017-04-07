@@ -24,8 +24,10 @@ cd sslcert
 ## Run 'certinfo' program
 ```
 cd sslcert/src
+
 # Build Application
 ./build.sh
+
 # Run Application
 ./certinfo ../certs/root.crt
 ./certinfo ../certs/interviewee.crt
