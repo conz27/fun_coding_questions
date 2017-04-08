@@ -10,6 +10,7 @@ contain enough information for us to reproduce your work).
 Tested on Ubuntu 16.04
 
 ## Prerequisites:
+* gcc >= 5.4 (or just enable C99 syntax)
 * CMake >= 3.0.2
 * OpenSSL
 * libssl
