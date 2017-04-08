@@ -3,6 +3,7 @@
 # Clean-up any old certificates
 find . -name *.key -exec rm {} \;
 find . -name *.crt -exec rm {} \;
+find . -name *.pem -exec rm {} \;
 rm *.old *.attr *.txt serial
 
 touch index.txt
@@ -30,7 +31,7 @@ echo
 echo "-----------------------------------------------"
 echo "Sign CSR with root certificate ..."
 echo "-----------------------------------------------"
-openssl ca -in ./certs/interviewee.csr -out ./certs/interviewee.crt -config root.cnf && \
+openssl ca -in ./certs/interviewee.csr -out ./certs/interviewee.crt -notext -config root.cnf && \
     echo "Success!" || (echo "Failed!"; exit 1)
 
 echo
@@ -39,5 +40,7 @@ echo
 echo "-----------------------------------------------"
 echo "Exporting signed certificate as PKCS12 ..."
 echo "-----------------------------------------------"
-openssl pkcs12 -export -in ./certs/interviewee.crt -inkey ./private/interviewee.key -out ./certs/interviewee.p12 && \
+cat ./certs/interviewee.crt > ./certs/interviewee_certchain.pem
+cat ./certs/root.crt >> ./certs/interviewee_certchain.pem
+openssl pkcs12 -export -in ./certs/interviewee_certchain.pem -inkey ./private/interviewee.key -out ./certs/interviewee_certchain.p12 && \
     echo "Success!" || (echo "Failed!"; exit 1)
