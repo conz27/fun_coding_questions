@@ -30,6 +30,6 @@ cd sslcert/src
 ./build.sh
 
 # Run Application
-./certinfo ../certs/root.crt
-./certinfo ../certs/interviewee.crt
+./cmake/certinfo ../certs/root.crt
+./cmake/certinfo ../certs/interviewee.crt
 ```
