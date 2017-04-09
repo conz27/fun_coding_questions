@@ -2,7 +2,8 @@
 #include <stdint.h>
 
 typedef struct _matrix {
-    size_t dim;         // Dimensions of the Matrix
+    size_t rows;         // Rows in the Matrix
+    size_t cols;         // Columns in the Matrix
     uint8_t *m;         // Pointer to Matrix Array.
 } Matrix;
 
@@ -10,11 +11,12 @@ typedef uint8_t GF2_ELEM;
 typedef Matrix* GF2_MATRIX;
 
 /**
- * Creates a 'dim by dim' matrix of any size.
- * @param[in] dim the dimension of the matrix.
+ * Creates a 'row by col' matrix of any size.
+ * @param[in] rows the number of rows in the matrix.
+ * @param[in] cols the number of columns in the matrix.
  * @return a GF2_MATRIX pointer.
  */
-GF2_MATRIX create(const size_t dim);
+GF2_MATRIX create(const size_t rows, const size_t cols);
 
 /**
  * Creates a 'dim by dim' identity matrix.

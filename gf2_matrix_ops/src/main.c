@@ -4,7 +4,7 @@
 
 int main(int argc, char**argv) {
     printf("Creating Empty Matrix of size: 5:\n\n");
-    GF2_MATRIX m = create(5);
+    GF2_MATRIX m = create(2,5);
     GF2_print(m);
 
     printf("\nGet element (1,5): %u\n", getValue(1,5,m));
