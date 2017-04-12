@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.0.2)
 
 project(certinfo)
 
+add_compile_options(-O3)
+
 set(REQUIRED_LIBS ssl crypto)
 
 foreach(lib ${REQUIRED_LIBS})
