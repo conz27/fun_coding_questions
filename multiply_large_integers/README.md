@@ -32,7 +32,7 @@ There are several ways to approach this problem:
       * BIG_O(n\*log(n)\*log(log(n)) and n\*log(n)\*2^BIG_O(lg\*n))
       * practical for numbers with 10,000 to 40,000 decimal digits
   
-## Solution
+## Solution (in-progress)
 The ideal solution is entirely dependent on the number of digits *n* that a multiplicand has. If *n* is sufficiently small, Karatsuba is slower than the naive method due to the overhead of recursions. If *n* is in the order of several thousand digits, Karatsuba / Toom-Cook offer better performance than the naive method. And last by not least, there comes a point around when *n* > 10,000 digits where FFT-based algorithms become asymptotically faster than the recursion-based ones. The optimial solution determines the appropriate algorithm to use based on the size of *n*.
 
 In practice today, bignum libraries employ the Karatsuba algorithm and may contain optimizations based on size of *n*. They can also reduce the number of recursions required based on whether the native architecture supports 16-bit or 32-bit integer multiplication, so the terminating condition of *n* == 1 can be changed to *n* == 2 bytes or 4 bytes respectively. This allows us to make use of the hardware acclerated multipliers for the last step.
