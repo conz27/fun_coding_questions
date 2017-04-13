@@ -142,7 +142,7 @@ int main(int argc, char**argv) {
         digestName = "sha256";
     } else if(memcmp(sigAlgorithm, "sha1", 4) == 0) {
         digestName = "sha1";
-    } else if(memcmp(sigAlgorithm, "md5", 4) == 0) {
+    } else if(memcmp(sigAlgorithm, "md5", 3) == 0) {
         digestName = "md5";
     } else {
         BIO_printf(outbio, "unsupported sigAlg: %s\n", sigAlgorithm);
