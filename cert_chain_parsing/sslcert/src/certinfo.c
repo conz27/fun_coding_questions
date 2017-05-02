@@ -62,6 +62,7 @@ int main(int argc, char**argv) {
     BIO *certbio = NULL;
     BIO *outbio = NULL;
     X509 *cert = NULL;
+    EVP_PKEY *evp_pubkey;
     const EVP_MD *digest = NULL;
     unsigned char fingerprint[EVP_MAX_MD_SIZE];
     unsigned char subject[MAX_SUBJECT_BYTES];
@@ -122,9 +123,14 @@ int main(int argc, char**argv) {
     // not equivalent and hence not self-signed.
     BIO_printf(outbio, "Self-Signed: ");
     if( issuerSize == subjectSize && strcmp(issuer, subject) == 0){
-        BIO_printf(outbio, "Yes\n");
+        evp_pubkey = X509_get_pubkey(cert);
+        if(X509_verify(cert, evp_pubkey)) {
+            BIO_printf(outbio, "Yes\n");
+        } else {
+            BIO_printf(outbio, "No - invalid public key!\n");
+        }
     } else {
-        BIO_printf(outbio, "No\n");
+        BIO_printf(outbio, "No - subject / issuer mistmatch!\n");
     }
     //printf("Issuer: %s\n", issuer);
     //printf("Subject: %s\n", subject);
@@ -166,6 +172,7 @@ cleanup:
     if(cert) X509_free(cert);
     if(certbio) BIO_free_all(certbio);
     if(outbio) BIO_free_all(outbio);
+    if(evp_pubkey) EVP_PKEY_free(evp_pubkey);
     ERR_free_strings();
     EVP_cleanup();
 
