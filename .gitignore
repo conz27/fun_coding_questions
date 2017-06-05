@@ -1,6 +1,12 @@
+*.cmake
+*.yuv
+*.mpg
+**/.project
+**/.cproject
 **/CMakeFiles/*
 **/cmake/*
-*.cmake
+**/build/*
+**/.settings/*
 cert_chain_parsing/sslcert/**/*.p12
 cert_chain_parsing/sslcert/**/*.pem
 cert_chain_parsing/sslcert/**/*.key
